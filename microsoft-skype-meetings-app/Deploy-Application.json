@@ -1,0 +1,78 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "Skype Meetings App",
+        "appVersion": "16.2.0.511",
+        "appArch": "x86",
+        "appLang": "en-US",
+        "appRevision": "1.9.4",
+        "appScriptDate": "2019-11-22",
+        "appScriptAuthor": "CyberMoloch",        
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 150,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://az801095.vo.msecnd.net/prod/LWA/plugins/windows/SkypeMeetingsApp.msi"
+                ],
+                "sha256": "73FDFB85B80B81C87E78580DC5B46A73C73F7907F8E6CFF0886DCB6493365255"
+            },
+            "x64": {
+                "uri": [
+                    ""
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            ""
+        ],
+        "associations": [
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            "$pasdtActiveSetupPath = 'C:\\ProgramData\\PSAppDeployToolkit\\ActiveSetup'",
+            "If (-not (Test-Path -Path $pasdtActiveSetupPath) ) { New-Item -Path $pasdtActiveSetupPath -ItemType Directory }",
+            "Copy-Item -Path ($dirFiles + '\\SkypeMeetingsApp.msi') -Destination ($pasdtActiveSetupPath + '\\SkypeMeetingsApp.msi') -Force"
+        ],
+        "installation": [
+            "$activeSetupParams = @{}",
+            "$activeSetupParams.Add('StubExePath','%SystemRoot%\\system32\\msiexec.exe')",
+            "$activeSetupParams.Add('Arguments',('/i '+ $pasdtActiveSetupPath + '\\SkypeMeetingsApp.msi /qn'))",
+            "$activeSetupParams.Add('Description',($appName))",
+            "$activeSetupParams.Add('Key',($appVendor + '_' + $appName + '_Install'))",
+            "$activeSetupParams.Add('Version',($appVersion.replace('.',',')))",
+            "Set-ActiveSetup @activeSetupParams"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Set-ActiveSetup -Key ($appVendor + '_' + $appName + '_Install') -PurgeActiveSetupKey"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
