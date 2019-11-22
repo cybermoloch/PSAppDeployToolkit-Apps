@@ -7,7 +7,7 @@
         "appVersion": "16.2.0.511",
         "appArch": "x86",
         "appLang": "en-US",
-        "appRevision": "1.9.4",
+        "appRevision": "1.9.5",
         "appScriptDate": "2019-11-22",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
@@ -57,7 +57,7 @@
             "$activeSetupParams = @{}",
             "$activeSetupParams.Add('StubExePath','%SystemRoot%\\system32\\msiexec.exe')",
             "$activeSetupParams.Add('Arguments',('/i '+ $pasdtActiveSetupPath + '\\SkypeMeetingsApp.msi /qn'))",
-            "$activeSetupParams.Add('Description',($appName))",
+            "$activeSetupParams.Add('Description',($installTitle))",
             "$activeSetupParams.Add('Key',($appVendor + '_' + $appName + '_Install'))",
             "$activeSetupParams.Add('Version',($appVersion.replace('.',',')))",
             "Set-ActiveSetup @activeSetupParams"
