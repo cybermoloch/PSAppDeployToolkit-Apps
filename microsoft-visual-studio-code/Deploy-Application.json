@@ -1,0 +1,73 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "Visual Studio Code",
+        "appVersion": "1.40.1",
+        "appArch": "x86_x64",
+        "appLang": "multi",
+        "appRevision": "2.1",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://az764295.vo.msecnd.net/stable/8795a9889db74563ddd43eb0a897a2384129a619/VSCodeSetup-ia32-1.40.1.exe"
+                ],
+                "sha256": "F7D6F5A4B3D394EFCBDB9834215646CB56D02E95DCFFFF062971D233F82459BB"
+            },
+            "x64": {
+                "uri": [
+                    "https://az764295.vo.msecnd.net/stable/8795a9889db74563ddd43eb0a897a2384129a619/VSCodeSetup-x64-1.40.1.exe"
+                ],
+                "sha256": "4B1532C56B88942080650E27D748E55CBE810A7DF53DC124ED6F5DBAE2D8676D"
+            }
+        },
+        "desktopItems": [
+            ""
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+        ],
+        "installation": [
+            "If ($Is64Bit) { $vsCodeArch = 'x64' } else { $vsCodeArch = 'ia32' }",
+            "$setupName = ('VSCodeSetup-' + $vsCodeArch + '-' + $appVersion + '.exe')",
+            "Execute-Process -Path $setupName -Parameters ('/verysilent /mergetasks=!runcode') -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Execute-Process -Path ($envProgramFiles + '\\Microsoft VS Code\\unins000.exe') -Parameters ('/verysilent') -PassThru"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
