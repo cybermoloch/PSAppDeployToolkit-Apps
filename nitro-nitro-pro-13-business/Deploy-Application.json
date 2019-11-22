@@ -1,0 +1,76 @@
+{
+    "rmmVariables": [
+        "Nitro_NitroPro13Serial"
+    ],
+    "psadtVariables": {
+        "appVendor": "Nitro",
+        "appName": "Nitro Pro 13 Business",
+        "appVersion": "13.2.6.26",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "2.1",
+        "appScriptDate": "2019-11-21",
+        "appScriptAuthor": "CyberMoloch",        
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "NitroPDF=Nitro Pro"
+        ],
+        "reqSpaceMb": 500,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "http://install.nitropdf.com/professional_132626/en/vlp/nitro_pro13_x86.msi"
+                ],
+                "sha256": "200420D484E4EB603674FAEE5C37AC4218DB68011065146EFF934E6BA9FF9F75"
+            },
+            "x64": {
+                "uri": [
+                    "http://install.nitropdf.com/professional_132626/en/vlp/nitro_pro13_x64.msi"
+                ],
+                "sha256": "393B0993D3BF0B9B4862D975F52CF03AD3C5CFCE147752E2B9271E7C989F925D"
+            }
+        },
+        "desktopItems": [
+            "Nitro Pro.lnk"
+        ],
+        "associations": [
+            {
+                "extension": ".pdf",
+                "application": "NitroPDF.Document.13"
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "$NPSERIAL = ($rmmEnvironment.Nitro_NitroPro13Serial)",
+            "Execute-MSI -Action Install -Path ('nitro_pro13_' + $appArch + '.msi') -AddParameters ('/QN NPSERIAL=' + $NPSERIAL.Value) -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Remove-MSIApplications -Name 'Nitro Pro'"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
