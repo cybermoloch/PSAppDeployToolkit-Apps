@@ -1,0 +1,86 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Mozilla",
+        "appName": "Firefox",
+        "appVersion": "70.0.1",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "2.3",
+        "appScriptDate": "2019-11-21",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "firefox=Mozilla Firefox"
+        ],
+        "reqSpaceMb": 200,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://download-installer.cdn.mozilla.net/pub/firefox/releases/70.0.1/win32/en-US/Firefox%20Setup%2070.0.1.exe"
+                ],
+                "sha256": "CE9C5414A62F4644E890945E4C586AD78F656AD6B3A6F7DB2D5AEA47CD8A4937"
+            },
+            "x64": {
+                "uri": [
+                    "https://download-installer.cdn.mozilla.net/pub/firefox/releases/70.0.1/win64/en-US/Firefox%20Setup%2070.0.1.exe"
+                ],
+                "sha256": "917C6638B2ADAF7266A75AD7C1CFAE6DDE85FFC670F2823A79C0A161DA3FBE80"
+            }
+        },
+        "desktopItems": [
+            "Firefox.lnk"
+        ],
+        "associations": [
+            {
+                "extension": ".htm",
+                "application": "FirefoxHTML-308046B0AF4A39CB"
+            },
+            {
+                "extension": ".html",
+                "application": "FirefoxHTML-308046B0AF4A39CB"
+            },
+            {
+                "extension": "http",
+                "application": "FirefoxURL-308046B0AF4A39CB"
+            },
+            {
+                "extension": "https",
+                "application": "FirefoxURL-308046B0AF4A39CB"
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "Execute-Process -Path 'Firefox%20Setup%2070.0.1.exe' -Parameters '/S'"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Execute-Process -Path ($envProgramFiles + '\\Mozilla Firefox\\uninstall\\helper.exe') -Parameters '/S'"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
