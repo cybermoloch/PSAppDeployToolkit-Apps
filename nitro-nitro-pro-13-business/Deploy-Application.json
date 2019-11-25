@@ -8,8 +8,8 @@
         "appVersion": "13.2.6.26",
         "appArch": "x86_x64",
         "appLang": "en-US",
-        "appRevision": "2.1",
-        "appScriptDate": "2019-11-21",
+        "appRevision": "2.132626.0.1",
+        "appScriptDate": "2019-11-25",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
         "installTitle": ""
@@ -58,7 +58,7 @@
         ],
         "installation": [
             "$NPSERIAL = ($rmmEnvironment.Nitro_NitroPro13Serial)",
-            "Execute-MSI -Action Install -Path ('nitro_pro13_' + $appArch + '.msi') -AddParameters ('/QN NPSERIAL=' + $NPSERIAL.Value) -PassThru"
+            "Execute-MSI -Action Install -Path ('nitro_pro13_' + $appArch + '.msi') -AddParameters ('/QN NPSERIAL=' + $NPSERIAL) -PassThru"
         ],
         "postinstallation": [
             ""    
