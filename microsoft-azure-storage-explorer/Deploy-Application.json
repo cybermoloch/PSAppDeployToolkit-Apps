@@ -1,0 +1,74 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "Azure Storage Explorer",
+        "appVersion": "1.11.1",
+        "appArch": "x86",
+        "appLang": "en-us",
+        "appRevision": "2.1111.0.0",
+        "appScriptDate": "2019-12-04",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer.exe"
+                ],
+                "sha256": "480777DF4AEDC7029679ED5C5CB8D892DF809F91B837624AB84918D222B12764"
+            },
+            "x64": {
+                "uri": [
+                    ""
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            ""
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+        ],
+        "installation": [
+            "Execute-Process -Path 'StorageExplorer.exe' -Parameters ('/verysilent) -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "If ($Is64Bit) { $programFiles = $envProgramFilesX86 } else { $programFiles = $envProgramFiles }",
+            "Execute-Process -Path ($programFiles + '\\Microsoft Azure Storage Explorer\\unins000.exe') -Parameters ('/verysilent /norestart') -PassThru"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
