@@ -7,7 +7,7 @@
         "appVersion": "1.40.2",
         "appArch": "x86_x64",
         "appLang": "en",
-        "appRevision": "2.1402.1.0",
+        "appRevision": "2.1402.2.0",
         "appScriptDate": "2019-12-04",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
@@ -66,7 +66,7 @@
             ""
         ],
         "uninstallation": [
-            "Execute-Process -Path ($envProgramFiles + '\\Microsoft VS Code\\unins000.exe') -Parameters ('/verysilent') -PassThru"
+            "Execute-Process -Path ($envProgramFiles + '\\Microsoft VS Code\\unins000.exe') -Parameters ('/verysilent /norestart') -PassThru"
         ],
         "postuninstallation": [
             ""    
