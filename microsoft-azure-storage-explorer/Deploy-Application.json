@@ -7,7 +7,7 @@
         "appVersion": "1.11.1",
         "appArch": "x86",
         "appLang": "en-us",
-        "appRevision": "2.1111.0.0",
+        "appRevision": "2.1111.0.1",
         "appScriptDate": "2019-12-04",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
@@ -55,7 +55,7 @@
         "preinstallation": [
         ],
         "installation": [
-            "Execute-Process -Path 'StorageExplorer.exe' -Parameters ('/verysilent) -PassThru"
+            "Execute-Process -Path 'StorageExplorer.exe' -Parameters ('/verysilent') -PassThru"
         ],
         "postinstallation": [
             ""    
