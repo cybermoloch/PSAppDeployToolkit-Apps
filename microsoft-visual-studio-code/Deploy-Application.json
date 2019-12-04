@@ -4,10 +4,12 @@
     "psadtVariables": {
         "appVendor": "Microsoft",
         "appName": "Visual Studio Code",
-        "appVersion": "1.40.1",
+        "appVersion": "1.40.2",
         "appArch": "x86_x64",
-        "appLang": "multi",
-        "appRevision": "2.1",
+        "appLang": "en",
+        "appRevision": "2.1402.1.0",
+        "appScriptDate": "2019-12-04",
+        "appScriptAuthor": "CyberMoloch",
         "installName": "",
         "installTitle": ""
     },
@@ -28,15 +30,15 @@
         "downloadInfo": {
             "x86": {
                 "uri": [
-                    "https://az764295.vo.msecnd.net/stable/8795a9889db74563ddd43eb0a897a2384129a619/VSCodeSetup-ia32-1.40.1.exe"
+                    "https://az764295.vo.msecnd.net/stable/f359dd69833dd8800b54d458f6d37ab7c78df520/VSCodeSetup-ia32-1.40.2.exe"
                 ],
-                "sha256": "F7D6F5A4B3D394EFCBDB9834215646CB56D02E95DCFFFF062971D233F82459BB"
+                "sha256": "30AC98EE4C8F905A4ECF740108FE7CA7408AD8EA404BA908BA6556ECA9B6DB5D"
             },
             "x64": {
                 "uri": [
-                    "https://az764295.vo.msecnd.net/stable/8795a9889db74563ddd43eb0a897a2384129a619/VSCodeSetup-x64-1.40.1.exe"
+                    "https://az764295.vo.msecnd.net/stable/f359dd69833dd8800b54d458f6d37ab7c78df520/VSCodeSetup-x64-1.40.2.exe"
                 ],
-                "sha256": "4B1532C56B88942080650E27D748E55CBE810A7DF53DC124ED6F5DBAE2D8676D"
+                "sha256": "464221A7757077644598EE7D3B4E8CE160EF6CE842F37BD8FB1A71085451C60F"
             }
         },
         "desktopItems": [
