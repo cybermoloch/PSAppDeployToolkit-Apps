@@ -1,0 +1,45 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Software Freedom Conservancy",
+        "appName": "Git for Windows",
+        "appVersion": "2.27.0",
+        "appArch": "x86_x64",
+        "appLang": "en-us",
+        "appRevision": "1.2270.0.1",
+        "appScriptDate": "2020-10-06",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://github.com/git-for-windows/git/releases/download/v2.27.0.windows.1/Git-2.27.0-32-bit.exe"
+                ],
+                "sha256": "876EC8B8FC283DDBACAB424379EEB7263E4515C497A208419C4E893DA87499F8"
+            },
+            "x64": {
+                "uri": [
+                    "https://github.com/git-for-windows/git/releases/download/v2.27.0.windows.1/Git-2.27.0-64-bit.exe"
+                ],
+                "sha256": "5974DB8C52B32F5E575EE021E8B47948892CE0E760095EEF98C31E3BBD5167B6"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/VERYSILENT /NORESTART /NOCANCEL /SP- /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /COMPONENTS=\"icons,ext\\reg\\shellhere,assoc,assoc_sh\"') -PassThru"
+        ],
+        "uninstallation": [
+            "If ($Is64Bit) { $programFiles = $envProgramFilesX86 } else { $programFiles = $envProgramFiles }",
+            "Execute-Process -Path ($programFiles + '\\Git\\unins000.exe') -Parameters ('/verysilent /norestart') -PassThru"
+        ]
+    }
+}
