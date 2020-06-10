@@ -4,72 +4,44 @@
     "psadtVariables": {
         "appVendor": "Microsoft",
         "appName": "Visual Studio Code",
-        "appVersion": "1.40.2",
+        "appVersion": "1.45.1",
         "appArch": "x86_x64",
         "appLang": "en",
-        "appRevision": "2.1402.2.0",
-        "appScriptDate": "2019-12-04",
+        "appRevision": "2.1451.2.0",
+        "appScriptDate": "2020-06-08",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
         "installTitle": ""
     },
     "appDetails": {
         "executables": [
-            ""
+            "Code=Visual Studio Code"
         ],
         "reqSpaceMb": 300,
-        "dotNet": {
-            "required": false,
-            "version": ""
-        },
-        "vcRedist": {
-            "required": false,
-            "release": "",
-            "version": ""
-        },
         "downloadInfo": {
             "x86": {
                 "uri": [
-                    "https://az764295.vo.msecnd.net/stable/f359dd69833dd8800b54d458f6d37ab7c78df520/VSCodeSetup-ia32-1.40.2.exe"
+                    "https://az764295.vo.msecnd.net/stable/5763d909d5f12fe19f215cbfdd29a91c0fa9208a/VSCodeSetup-ia32-1.45.1.exe"
                 ],
-                "sha256": "30AC98EE4C8F905A4ECF740108FE7CA7408AD8EA404BA908BA6556ECA9B6DB5D"
+                "sha256": "64C7C9636E6C7A698085F4C4FD9CD4DC1E346EF182510C42190BC484853E1C06"
             },
             "x64": {
                 "uri": [
-                    "https://az764295.vo.msecnd.net/stable/f359dd69833dd8800b54d458f6d37ab7c78df520/VSCodeSetup-x64-1.40.2.exe"
+                    "https://az764295.vo.msecnd.net/stable/5763d909d5f12fe19f215cbfdd29a91c0fa9208a/VSCodeSetup-x64-1.45.1.exe"
                 ],
-                "sha256": "464221A7757077644598EE7D3B4E8CE160EF6CE842F37BD8FB1A71085451C60F"
+                "sha256": "E9E107CF53F8F06688C881E4616BD9A8553D012A657389399827E0EC2155633C"
             }
-        },
-        "desktopItems": [
-            ""
-        ],
-        "associations": [
-            {
-                "extension": "",
-                "application": ""
-            }
-        ]
+        }
     },
     "tasks": {
-        "preinstallation": [
-        ],
         "installation": [
-            "If ($Is64Bit) { $vsCodeArch = 'x64' } else { $vsCodeArch = 'ia32' }",
-            "$setupName = ('VSCodeSetup-' + $vsCodeArch + '-' + $appVersion + '.exe')",
-            "Execute-Process -Path $setupName -Parameters ('/verysilent /mergetasks=!runcode') -PassThru"
-        ],
-        "postinstallation": [
-            ""    
+            "Execute-Process -Path $packageFilename -Parameters ('/verysilent /mergetasks=!runcode') -PassThru"
         ],
         "preuninstallation": [
             ""
         ],
         "uninstallation": [
             "Execute-Process -Path ($envProgramFiles + '\\Microsoft VS Code\\unins000.exe') -Parameters ('/verysilent /norestart') -PassThru"
-        ],
-        "postuninstallation": [
-            ""    
         ]
     }
 }
