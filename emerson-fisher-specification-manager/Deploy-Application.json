@@ -1,0 +1,46 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Emerson",
+        "appName": "Fisher Specification Manager",
+        "appVersion": "2.22.00",
+        "appArch": "x86",
+        "appLang": "en",
+        "appRevision": "1.22200.1.0",
+        "appScriptDate": "2020-06-10",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "dotNet35": {
+            "required": true
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://www.emerson.com/documents/automation/downloads-drivers-fisher-specification-manager-software-en-191830.zip"
+                ],
+                "sha256": "AB09B9D6037351DAF0CCBD1B68BEE4E268F865CED9707ABF0A966F63990E01A0"
+            }
+        },
+        "desktopItems": [
+            "Fisher™ Valve Specification Manager.lnk"
+        ]
+    },
+    "tasks": {
+        "installation": [
+            "Unblock-File -Path ($dirFiles + '.\\FSM_Full_22200.exe')",
+            "Set-Location -Path $dirFiles",
+            "Execute-Process -Path FSM_Full_22200.exe -Parameters ('/S /v/qn') -PassThru"
+        ],
+        "uninstallation": [
+            ""
+        ]
+    }
+}
