@@ -1,74 +1,46 @@
 {
     "rmmVariables": [
+        "AzStorage_MirrorURI",
+        "AzStorage_MirrorSAS"
     ],
     "psadtVariables": {
         "appVendor": "Microsoft",
         "appName": "Azure Storage Explorer",
-        "appVersion": "1.11.1",
+        "appVersion": "1.13.1",
         "appArch": "x86",
         "appLang": "en-us",
-        "appRevision": "2.1111.0.1",
-        "appScriptDate": "2019-12-04",
+        "appRevision": "2.1131.1.1",
+        "appScriptDate": "2020-06-09",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
         "installTitle": ""
     },
     "appDetails": {
         "executables": [
-            ""
+            "StorageExplorer=Microsoft Azure Storage Explorer"
         ],
         "reqSpaceMb": 300,
-        "dotNet": {
-            "required": false,
-            "version": ""
-        },
-        "vcRedist": {
-            "required": false,
-            "release": "",
-            "version": ""
+        "dotNet4x": {
+            "required": true,
+            "minVersion": "4.7.2"
         },
         "downloadInfo": {
             "x86": {
                 "uri": [
-                    "https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer.exe"
+                    "https://download.microsoft.com/download/A/E/3/AE32C485-B62B-4437-92F7-8B6B2C48CB40/StorageExplorer.exe",
+                    "${AzStorage_MirrorURI}microsoft/azure-storage-explorer/${appVersion}/StorageExplorer.exe${AzStorage_MirrorSAS}"
                 ],
-                "sha256": "480777DF4AEDC7029679ED5C5CB8D892DF809F91B837624AB84918D222B12764"
-            },
-            "x64": {
-                "uri": [
-                    ""
-                ],
-                "sha256": ""
+                "sha256": "9873BEB6EEAD6AB1173A81BDD5D4189893364AA50EBDF6E14509AF79F72B3AA1"
             }
-        },
-        "desktopItems": [
-            ""
-        ],
-        "associations": [
-            {
-                "extension": "",
-                "application": ""
-            }
-        ]
+        }
     },
     "tasks": {
-        "preinstallation": [
-        ],
         "installation": [
-            "Execute-Process -Path 'StorageExplorer.exe' -Parameters ('/verysilent') -PassThru"
-        ],
-        "postinstallation": [
-            ""    
-        ],
-        "preuninstallation": [
-            ""
+            "Execute-Process -Path 'StorageExplorer.exe' -Parameters ('/VERYSILENT /NORESTART /RESTARTAPPLICATIONS /ALLUSERS') -PassThru"
         ],
         "uninstallation": [
             "If ($Is64Bit) { $programFiles = $envProgramFilesX86 } else { $programFiles = $envProgramFiles }",
             "Execute-Process -Path ($programFiles + '\\Microsoft Azure Storage Explorer\\unins000.exe') -Parameters ('/verysilent /norestart') -PassThru"
-        ],
-        "postuninstallation": [
-            ""    
         ]
     }
 }
