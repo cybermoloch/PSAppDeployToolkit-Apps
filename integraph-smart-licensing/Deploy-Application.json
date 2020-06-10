@@ -1,0 +1,69 @@
+{
+    "rmmVariables": [
+        "AzStorage_MirrorURI",
+        "AzStorage_MirrorSAS",
+        "AzStorage_PrivateSAS",
+        "Intergraph_LicenseUri"
+    ],
+    "psadtVariables": {
+        "appVendor": "Intergraph",
+        "appName": "Smart Licensing Client",
+        "appVersion": "14.01.07.0108",
+        "appArch": "x86",
+        "appLang": "multi",
+        "appRevision": "2.1401070108.0.1",
+        "appScriptDate": "2020-10-06",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 200,
+        "dotNet4x": {
+            "required": true,
+            "minVersion": "4.8"
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "${AzStorage_MirrorURI}intergraph-smart-licensing/ISL_CLIENT_14.01.07.0108.zip${AzStorage_MirrorSAS}"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            ""
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            "$cciFile = ($dirSupportFiles + '\\ConfigurationConnectionInfoFile.cci')",
+            "Get-FileFromUri -Uri ($Intergraph_LicenseUri + $AzStorage_PrivateSAS) -Destination $cciFile"
+        ],
+        "installation": [
+            "$parameters = ('-silent -install SLAACCEPT=YES CONFIGFILE=' + $cciFile)",
+            "Execute-Process -Path 'Smart Licensing Client Setup.exe' -Parameters $parameters -PassThru"
+        ],
+        "postinstallation": [
+            "$versions = @('2016','2017','2017 R1','2018','2019','2020')",
+            "$installDirectory = @()",
+            "$versions | ForEach-Object -Process {$installDirectory += ('C:\\CADWorx ' + $_ + '\\Equipment\\System')}",
+            "$versions | ForEach-Object -Process {$installDirectory += ('C:\\CADWorx ' + $_ + '\\IP\\System')}",
+            "$versions | ForEach-Object -Process {$installDirectory += ('C:\\CADWorx ' + $_ + '\\P&ID\\System')}",
+            "$versions | ForEach-Object -Process {$installDirectory += ('C:\\CADWorx ' + $_ + '\\Plant\\System')}",
+            "$versions | ForEach-Object -Process {$installDirectory += ('C:\\CADWorx Structure ' + $_ + '\\Structure\\System')}",
+            "$versions | ForEach-Object -Process {$installDirectory += ($envCommonProgramFilesX86 + '\\Intergraph CAS\\CAESAR II ')}",
+            "$versions | ForEach-Object -Process {$installDirectory += ($envCommonProgramFilesX86 + '\\Intergraph CAS\\PV ELITE ')}",
+            "$versions | ForEach-Object -Process {$installDirectory += ($envCommonProgramFilesX86 + '\\Intergraph CAS\\TANK ')}",
+            "$validInstall = @()",
+            "$installDirectory | ForEach-Object -Process { If (Test-Path -Path $_) {$validInstall += ($_)} }",
+            "$validInstall | ForEach-Object -Process {New-Item -Type 'file' -Path ($_ + '\\IVER.BIN')}"
+        ],
+        "uninstallation": [
+            "Remove-MSIApplications -Name 'Intergraph Smart Licensing'"
+        ]
+    }
+}
