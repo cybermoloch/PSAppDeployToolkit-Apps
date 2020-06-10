@@ -21,15 +21,15 @@
         "downloadInfo": {
             "x86": {
                 "uri": [
-                    "https://2.na.dl.wireshark.org/win64/Wireshark-win64-3.2.4.exe"
+                    "https://2.na.dl.wireshark.org/win64/Wireshark-win32-3.2.4.exe"
                 ],
-                "sha256": ""
+                "sha256": "C17E4A812031D5DFD4EF0A4B4DAE1B60BB45EB7CE8C9E8B1B5EFF4DB5BCF4B72"
             },
             "x64": {
                 "uri": [
-                    "https://2.na.dl.wireshark.org/win32/Wireshark-win32-3.2.4.exe"
+                    "https://2.na.dl.wireshark.org/win32/Wireshark-win64-3.2.4.exe"
                 ],
-                "sha256": ""
+                "sha256": "DB2565EE6410B7C57F54AAAC86954E4F6A98E2EA31FFBEA83E60B981FFF57301"
             }
         }
     },
