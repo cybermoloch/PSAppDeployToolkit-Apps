@@ -15,7 +15,8 @@
     },
     "appDetails": {
         "executables": [
-            "Code=Visual Studio Code"
+            "Wireshark=Wireshark",
+            "dumpcap=Dumpcap"
         ],
         "reqSpaceMb": 300,
         "downloadInfo": {
@@ -36,9 +37,6 @@
     "tasks": {
         "installation": [
             "Execute-Process -Path $packageFilename -Parameters ('/S') -PassThru"
-        ],
-        "preuninstallation": [
-            ""
         ],
         "uninstallation": [
             "Execute-Process -Path ($envProgramFiles + '\\Wireshark\\uninstall.exe') -Parameters ('/S') -PassThru"
