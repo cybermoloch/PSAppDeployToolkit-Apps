@@ -1,0 +1,42 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Oracle",
+        "appName": "VirtualBox",
+        "appVersion": "6.1.10",
+        "appArch": "x64",
+        "appLang": "en-us",
+        "appRevision": "1.6110.0.1",
+        "appScriptDate": "2020-01-09",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "VirtualBox=VirtualBox Manager",
+            "VirtualBoxVM=VirtualBox Virtual Machine"
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://download.virtualbox.org/virtualbox/6.1.10/VirtualBox-6.1.10-138449-Win.exe"
+                ],
+                "sha256": "5BC643D09A15BB105F1DF37F14E2024F88E82019921EAD3CD9A43BEE7290C762"
+            }
+        },
+        "desktopItems": [
+            "Oracle VM VirtualBox"
+        ]
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('--silent') -PassThru"
+        ],
+        "uninstallation": [
+            "Execute-Process -Path 'msiexec.exe' -Parameters ('/x {216BFD11-B076-4E88-8526-65CC9F94483C} /qn')"
+        ]
+    }
+}
