@@ -1,0 +1,45 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Remote Utilities",
+        "appName": "Viewer",
+        "appVersion": "6.12.2.0.b2",
+        "appArch": "x86",
+        "appLang": "multi",
+        "appRevision": "0.1",
+        "appScriptDate": "2020-05-05",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "rutview=Viewer"
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://www.remoteutilities.com/download/beta/viewer6.12.b2.exe"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            "Viewer.lnk"
+        ]
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/S /v/qn') -PassThru"
+        ],
+        "postinstallation": [
+            "Stop-Process -Name rutview -Force"
+        ],
+        "uninstallation": [
+            "Execute-Process -Path 'msiexec.exe' -Parameters ('/x {B180AF59-3DDB-4537-AF50-EC600CF20D60} /qn')"
+        ]
+    }
+}
