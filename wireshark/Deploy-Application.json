@@ -1,0 +1,47 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Wireshark Foundation",
+        "appName": "WIreshark",
+        "appVersion": "3.2.4",
+        "appArch": "x86_x64",
+        "appLang": "en",
+        "appRevision": "2.324.0.1",
+        "appScriptDate": "2020-06-10",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "Code=Visual Studio Code"
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://2.na.dl.wireshark.org/win64/Wireshark-win64-3.2.4.exe"
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "https://2.na.dl.wireshark.org/win32/Wireshark-win32-3.2.4.exe"
+                ],
+                "sha256": ""
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/S') -PassThru"
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Execute-Process -Path ($envProgramFiles + '\\Wireshark\\uninstall.exe') -Parameters ('/S') -PassThru"
+        ]
+    }
+}
