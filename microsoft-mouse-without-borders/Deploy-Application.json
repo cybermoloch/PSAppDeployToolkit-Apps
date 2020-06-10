@@ -1,0 +1,43 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "Mouse without Borders",
+        "appVersion": "2.1.8.0105",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "2.2180105.0.1",
+        "appScriptDate": "2020-10-06",
+        "appScriptAuthor": "CyberMoloch",        
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "MouseWithoutBorders=Mouse without Boarders",
+            "MouseWithoutBordersHelper=Mouse Without Boarders Helper"
+        ],
+        "reqSpaceMb": 100,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://download.microsoft.com/download/6/5/8/658AFC4C-DC02-4CB8-839D-10253E89FFF7/MouseWithoutBordersSetup.msi"
+                ],
+                "sha256": "C73D373275519DE5545824FF20E886E4C2D76770CB77F8B685C0B52A1C07E97D"
+            }
+        },
+        "desktopItems": [
+            "Mouse without Borders"
+        ]
+    },
+    "tasks": {
+        "installation": [
+            "Execute-MSI -Action Install -Path $packageFilename -AddParameters ('/QN') -PassThru"
+        ],
+        "uninstallation": [
+            "Execute-Process -Path 'msiexec.exe' -Parameters ('/x {D3BC954F-D661-474C-B367-30EB6E56542E} /qn')"
+        ]
+    }
+}
