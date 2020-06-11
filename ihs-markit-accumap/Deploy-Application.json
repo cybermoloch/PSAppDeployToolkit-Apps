@@ -1,0 +1,113 @@
+{
+    "rmmVariables": [
+        "AccuMap_LicenseUri",
+        "AccuMap_LicenseSas"
+    ],
+    "psadtVariables": {
+        "appVendor": "IHS Markit",
+        "appName": "AccuMap",
+        "appVersion": "",
+        "appArch": "x64",
+        "appLang": "multi",
+        "appRevision": "0.1",
+        "appScriptDate": "2020-06-11",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 40000,
+        "dotNet4x": {
+            "required": true,
+            "minversion": "4.6.2"
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    ""
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "http://productdownloads.ihs.com/private/release/AccuSuite/Downloader/AccuMap_IPL.exe"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            "AccuMap IPL.lnk"
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            "$downloaderVersionInfo = Get-ChildItem ($dirFiles + '\\' + $packageFilename) | Select -ExpandProperty VersionInfo",
+            "$downloaderVersion = Get-FileVersion ($dirFiles + '\\' + $packageFilename)",
+            "$downloaderConfigDirectory = 'IHS_Markit\\AccuMap_IPL.exe_StrongName_fxknvedwlkwtltdz21hw2dkfydynv3fd'",
+            "$downloaderConfigDestination = ($envLocalAppData + '\\' + $downloaderConfigDirectory + '\\' + $downloaderVersion)",
+            "New-Folder -Path $downloaderConfigDestination",
+            "Copy-File -Path ($dirSupportFiles + '\\user.config') -Destination ($downloaderConfigDestination + '\\user.config')",
+            "$installedAccuMapPath = (Get-ChildItem 'C:\\IHS Markit\\AccuMap' -Filter 'v*' -Directory)",
+            "If ($installedAccuMapPath) { Show-InstallationProgress -StatusMessage ('Uninstalling previous AccuMap versions...') }",
+            "If ($installedAccuMapPath) { $installedAccuMapPath | ForEach-Object -Process { $uninstallParameters = ('-f\"C:\\IHS Markit\\Accumap\\' + $_.Name + '\\Uninst.isu\" -a') } }",
+            "If ($installedAccuMapPath) { $uninstallParameters | ForEach-Object -Process { Execute-Process -Path ($envWinDir + '\\IsUninst.exe') -Parameters $_ -PassThru } }",
+            "Remove-Item -Path 'C:\\IHS Markit\\AccuMap\\current.ver'"
+        ],
+        "installation": [
+            "Show-InstallationProgress -StatusMessage ('Downloading and extracting installation archive... WARNING: This may take over an hour!')",
+            "Unblock-File -Path ($dirFiles + '\\' + $packageFilename)",
+            "Execute-Process -Path $packageFilename -Parameters ('-A') -PassThru",
+            "Show-InstallationProgress -StatusMessage ('Installing AccuMap IPL...')",
+            "$extractedDirectory = (Get-ChildItem $dirFiles -Filter 'NewIPL_*' -Directory)",
+            "$fullSetupPath = ($dirFiles + '\\' + $extractedDirectory[0].Name + '\\AccuMap\\setup.exe')",
+            "$serverResponseFile = ($dirSupportFiles + '\\' + 'accumap-server.iss')",
+            "$serverSetupParameters = ('-s -f1' + $serverResponseFile)",
+            "While (-Not (Test-Path -Path $fullSetupPath)) { Start-Sleep 2 }",
+            "Execute-Process -Path $fullSetupPath -Parameters $serverSetupParameters -PassThru",
+            "Start-Sleep -Seconds 60",
+            "While (Get-Process -Name '_main') { Start-Sleep 2 }",
+            "While (Get-Process -Name '_INS5576._MP') { Start-Sleep 2 }",
+            "While (Get-Process -Name '_IsDel') { Start-Sleep 2 }"
+        ],
+        "postinstallation": [
+            "Show-InstallationProgress -StatusMessage ('Downloading license file...')",
+            "$fullLicenseUri = ($AccuMap_LicenseUri + $AccuMap_LicenseSas)",
+            "Get-FileFromUri -Uri $fullLicenseUri -Destination ('C:\\IHS Markit\\AccuMap\\Shared\\sssk.dat')",
+            "$installationPath = (Get-ChildItem 'C:\\IHS Markit\\AccuMap' -Filter 'v*' -Directory)",
+            "$workstationSetupPath = ($installationPath[$_.Count -1].FullName)",
+            "$workstationSetupFullPath = ($workstationSetupPath + '\\Setup\\setup.exe')",
+            "$workstationSetupResponseFile = ($dirSupportFiles + '\\accumap-workstation.iss')",
+            "$workstationSetupParameters = ('-s -f1' + $workstationSetupResponseFile)",
+            "Write-Log -Message ('Checking for existing AccuMap Workstation IPL')",
+            "$isWorkstationInstalled = (Get-InstalledApplication -Name 'AccuMap Workstation Setup IPL')",
+            "$workstatationInstallation += @()",
+            "$workstatationInstallation += (Show-InstallationProgress -StatusMessage ('Installing AccuMap Workstation IPL with DST Image Viewer...'))",
+            "$workstatationInstallation += (Execute-Process -Path ($dirSupportFiles + '\\hide_dstviewer_setup.exe') -NoWait)",
+            "$workstatationInstallation += (Execute-Process -Path ($dirSupportFiles + '\\hide_dstviewer_installshield.exe') -NoWait)",
+            "$workstatationInstallation += (Execute-Process -Path $workstationSetupFullPath -Parameters $workstationSetupParameters -PassThru)",
+            "If (-not $isWorkstationInstalled) { $workstationInstallation | ForEach-Object -Process { Invoke-Expression $PSItem } }",
+            "While (Get-Process -Name '_INS5576._MP') { Start-Sleep 2 }",
+            "While (Get-Process -Name '_IsDel') { Start-Sleep 2 }",
+            "While (Get-Process -Name '_INS5576._MP') { Start-Sleep 2 }",
+            "Start-Sleep -Seconds 60",
+            "While (Get-Process -Name '_IsDel') { Start-Sleep 2 }"
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            ""
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
