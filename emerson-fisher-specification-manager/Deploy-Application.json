@@ -4,10 +4,10 @@
     "psadtVariables": {
         "appVendor": "Emerson",
         "appName": "Fisher Specification Manager",
-        "appVersion": "2.22.00",
+        "appVersion": "2.20.00",
         "appArch": "x86",
         "appLang": "en",
-        "appRevision": "1.22200.1.0",
+        "appRevision": "2.22000.5.5",
         "appScriptDate": "2020-06-10",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
@@ -15,7 +15,7 @@
     },
     "appDetails": {
         "executables": [
-            ""
+            "Fisher Specification Manager=Fisher Specification Manager"
         ],
         "reqSpaceMb": 300,
         "dotNet35": {
@@ -30,17 +30,17 @@
             }
         },
         "desktopItems": [
-            "Fisher™ Valve Specification Manager.lnk"
+            "Fisher$([char]0x2122) Valve Specification Manager.lnk"
         ]
     },
     "tasks": {
         "installation": [
-            "Unblock-File -Path ($dirFiles + '.\\FSM_Full_22200.exe')",
-            "Set-Location -Path $dirFiles",
-            "Execute-Process -Path FSM_Full_22200.exe -Parameters ('/S /v/qn') -PassThru"
+            "$parameters = ('/s /x /b\"' + $dirFiles + '\" /v/qn')",
+            "Execute-Process -Path FSM_Full_22000.exe -Parameters $parameters -PassThru",
+            "Execute-MSI -Action 'Install' -Path ('Fisher' + ([char]0x00AE) + ' Specification Manager.msi') -AddParameters ('/qn')"
         ],
         "uninstallation": [
-            ""
+            "Execute-Process -Path 'msiexec.exe' -Parameters ('/x {93CBB440-C3CC-4BDE-A69B-93964D2C7554} /qn')"
         ]
     }
 }
