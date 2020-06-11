@@ -1,0 +1,47 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Emerson",
+        "appName": "PRV2SIZE",
+        "appVersion": "2.9.31",
+        "appArch": "x86",
+        "appLang": "en-us",
+        "appRevision": "1.2932.1.1",
+        "appScriptDate": "2020-06-10",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "dotNet35": {
+            "required": true
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://valvesizing.emerson.com/Downloads/PRV2SIZE/pr7_20200224.1.zip"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            ""
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+        ],
+        "installation": [
+            "$setupPath = Get-Item -Path ($dirfiles + '\\Application*.')",
+            "Execute-Process -Path ($setupPath + '\\setup.exe') -Parameters ('/qn') -PassThru"
+        ],
+        "uninstallation": [
+            ""
+        ]
+    }
+}
