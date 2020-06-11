@@ -1,0 +1,73 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Sennheiser",
+        "appName": "HeadSetup Pro",
+        "appVersion": "3.3.12020",
+        "appArch": "x86",
+        "appLang": "en-US",
+        "appRevision": "0",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 500,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://s3.amazonaws.com/assets.sennheiser.com/global-downloads/file/12898/HeadSetupPro_3.3.12020.exe"
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    ""
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            ""
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/S /V/qn') -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            ""
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
