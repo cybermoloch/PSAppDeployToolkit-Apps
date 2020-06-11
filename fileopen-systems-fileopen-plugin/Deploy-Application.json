@@ -1,0 +1,38 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "FileOpen Systems",
+        "appName": "FileOpen Plug-in",
+        "appVersion": "",
+        "appArch": "x86",
+        "appLang": "en",
+        "appRevision": "1.0.0.0",
+        "appScriptDate": "2020-04-03",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 50,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://plugin.fileopen.com/current/FileOpenInstaller.exe"
+                ],
+                "sha256": ""
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters '/verysilent' -PassThru"
+        ],
+        "uninstallation": [
+            ""
+        ]
+    }
+}
