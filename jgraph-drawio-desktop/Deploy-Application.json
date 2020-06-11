@@ -1,0 +1,58 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "JGraph",
+        "appName": "draw.io Desktop",
+        "appVersion": "13.0.3",
+        "appArch": "x64",
+        "appLang": "en",
+        "appRevision": "2.1303.0.0",
+        "appScriptDate": "2020-01-14",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "draw.io"
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://github.com/jgraph/drawio0-deskktop/releases/v13.0.3/draw.io-13.0.3-windows-installer.exe"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            "draw.io.link"
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+        ],
+        "installation": [
+            "Execute-Process -Path $packageFileName -Parameters ('/S') -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Execute-Process -Path ($envProgramFiles + '\\draw.io\\Uninstall draw.io.exe' -Parameters ('/allusers /S') -PassThru"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
