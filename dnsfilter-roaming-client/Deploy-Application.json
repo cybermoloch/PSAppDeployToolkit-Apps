@@ -1,0 +1,44 @@
+{
+    "rmmVariables": [
+        "DNSFilter_SiteSecretKey"
+    ],
+    "psadtVariables": {
+        "appVendor": "DNSFilter",
+        "appName": "Roaming Client",
+        "appVersion": "1.4.3",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "0",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 50,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://download.dnsfilter.com/User_Agent/Windows/DNS_Agent_Setup_x86.msi"
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "https://download.dnsfilter.com/User_Agent/Windows/DNS_Agent_Setup.msi"
+                ],
+                "sha256": ""
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "$NKEY = ($DNSFilter_SiteSecretKey)",
+            "Execute-MSI -Action Install -Path $packageFileName -AddParameters ('/QN NKEY=\"' + $NKEY + '\" TRAYICON=\"disabled\"') -PassThru"
+        ],
+        "uninstallation": [
+            "Remove-MSIApplications -Name 'DNSFilter'"
+        ]
+    }
+}
