@@ -1,0 +1,68 @@
+{
+    "rmmVariables": [
+        "OpenVPN_ConfigUriBase",
+        "OpenVPN_ConfigUriSAS"
+    ],
+    "psadtVariables": {
+        "appVendor": "OpenVPN",
+        "appName": "OpenVPN GUI",
+        "appVersion": "2.4.8",
+        "appArch": "x86_x64",
+        "appLang": "multi",
+        "appRevision": "0.1",
+        "appScriptDate": "2020-04-02",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 50,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.8-I602-Win10.exe"
+                ],
+                "sha256": "D8F861DE1519C680C4E506B4E08B4D80DB7C385A4CCC2FCC56E2278D41C1CABE"
+            },
+            "x64": {
+                "uri": [
+                    "https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.8-I602-Win10.exe"
+                ],
+                "sha256": "D8F861DE1519C680C4E506B4E08B4D80DB7C385A4CCC2FCC56E2278D41C1CABE"
+            }
+        },
+        "desktopItems": [
+            "OpenVPN GUI.lnk"
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+        ],
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/S') -PassThru"
+        ],
+        "postinstallation": [
+            "$configFilename = ('openvpn-' + $envComputerName + '-inline.ovpn')",
+            "$fullConfigUri = ($OpenVPN_ConfigUriBase + $configFilename + $OpenVPN_ConfigUriSAS)",
+            "Get-FileFromUri -Uri $fullConfigUri -Destination ($envProgramFiles + '\\OpenVPN\\config\\' + $configFilename)"
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            ""
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
