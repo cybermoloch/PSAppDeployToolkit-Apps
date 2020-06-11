@@ -1,0 +1,88 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Autodesk",
+        "appName": "Navisworks Freedom 2018",
+        "appVersion": "Update2",
+        "appArch": "x64",
+        "appLang": "multi",
+        "appRevision": "1.98",
+        "appScriptAuthor": "",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "roamer=Autodesk Navisworks 2018"
+        ],
+        "reqSpaceMb": 6000,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    ""
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "https://trial2.autodesk.com/NET18SWDLD/2018/NAVFREE/0AE6D40A-ECF1-4683-8642-93D8C770D3FA/SFX/Autodesk_Navisworks_Freedom_2018_Multilingual_Win_64bit_dlm.sfx.exe"
+                ],
+                "sha256": "28C9EEAE72E84F445D194E9CEA3CADFC736F36399118B6C1E3CE74FE0A7B8F56"
+            }
+        },
+        "desktopItems": [
+            "Autodesk Desktop App.lnk"
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            "Show-InstallationProgress -StatusMessage ('Extracting installation package... please wait.')",
+            "Execute-Process -Path ($dirSupportFiles + '\\hide_autodesk_selfextract.exe') -NoWait",
+            "Execute-Process -Path ($packageFilename) -Parameters ('-suppresslaunch -d \"' + $dirFiles + '\"') -WindowStyle 'Minimized'"
+        ],
+        "installation": [
+            "$extractPath = (Join-Path -Path ($dirFiles) -ChildPath ($packageFilename).Split('.')[0])",
+            "Execute-Process -Path ($extractPath + '\\Setup.exe') -Parameters ('/W /q /I') -PassThru"
+        ],
+        "postinstallation": [
+            "Stop-Process -Name 'AutodeskDesktopApp' -Force",
+            "Show-InstallationProgress -StatusMessage ('Installing patches... please wait.')",
+            "$updateUri = @()",
+            "$updateUri += 'https://up.autodesk.com/2018/NAVFREE/Autodesk_Navisworks_2018_Update_2_Multilingual_Freedom_64bit.msp'",
+            "$updateSha256 = '375D29C36AD964E2829800D9F2C967820A28C4217380A04E8522BEE8A14DCCAA'",
+            "$dlUri = (Get-FileFromUri -Uri $updateUri -Sha256 $updateSha256)",
+            "If ($dlUri) { Execute-MSI -Path ($dirsupportFiles + '\\Autodesk_Navisworks_2018_Update_2_Multilingual_Freedom_64bit.msp') -Action 'Patch' -Parameters '/QN'}"
+        ],
+        "preuninstallation": [
+            "$removeAutodeskMSI = @()",
+            "$removeAutodeskMSI += '{ECDBDF2B-DC3E-0000-A5F5-F0B376CB6B4A}' # Navisworks Freedom 2018",
+            "$removeAutodeskMSI += '{579A14AB-CDBB-4F48-BD4B-264853E1C386}' # Autodesk Advanced Material Library 2018",
+            "$removeAutodeskMSI += '{177AD7F6-9C77-4E50-BA53-B7259C5F282D}' # Autodesk Advanced Material Library Image Library 2018",
+            "$removeAutodeskMSI += '{7847611E-92E9-4917-B395-71C91D523104}' # Autodesk Material Library 2018",
+            "$removeAutodeskMSI += '{FCDED119-A969-4E48-8A32-D21AD6B03253}' # Autodesk Material Library Base Resolution Image Library 2018",
+            "$removeAutodeskMSI += '{ECDBDF2B-DC3E-0409-A5F5-F0B376CB6B4A}' # Autodesk Navisworks Freedom 2018 - English Language Pack"
+        ],
+        "uninstallation": [
+            "$removeAutodeskMSI | ForEach-Object {Execute-Process -Path 'msiexec.exe' -Parameters ('/x ' + $PSItem + ' /qn') }"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
