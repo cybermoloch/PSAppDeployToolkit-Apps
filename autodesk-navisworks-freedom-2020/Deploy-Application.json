@@ -1,0 +1,80 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Autodesk",
+        "appName": "Navisworks Freedom 2020",
+        "appVersion": "",
+        "appArch": "x64",
+        "appLang": "multi",
+        "appRevision": "",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "roamer=Autodesk Navisworks 2020"
+        ],
+        "reqSpaceMb": 6000,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    ""
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "https://trial2.autodesk.com/NetSWDLD/2020/NAVFREE/B119B44D-7BFA-4F02-BF22-057BE0F2672D/SFX/Autodesk_Navisworks_Freedom_2020_Multilingual_Win_64bit_dlm.sfx.exe"
+                ],
+                "sha256": "5DED3D94A50D39C2FCD82BABFBC71F6BE02C846B4CB6403051396A2E8138FE0C"
+            }
+        },
+        "desktopItems": [
+            "Autodesk Desktop App.lnk"
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            "Show-InstallationProgress -StatusMessage ('Extracting installation package... please wait.')",
+            "Execute-Process -Path ($dirSupportFiles + '\\hide_autodesk_selfextract.exe') -NoWait",
+            "Execute-Process -Path ($packageFilename) -Parameters ('-suppresslaunch -d \"' + $dirFiles + '\"') -WindowStyle 'Minimized'"
+        ],
+        "installation": [
+            "$extractPath = (Join-Path -Path ($dirFiles) -ChildPath ($packageFilename).Split('.')[0])",
+            "Execute-Process -Path ($extractPath + '\\Setup.exe') -Parameters ('/W /q /I') -PassThru"
+        ],
+        "postinstallation": [
+            "Stop-Process -Name 'AutodeskDesktopApp' -Force"
+        ],
+        "preuninstallation": [
+            "$removeAutodeskMSI = @()",
+            "$removeAutodeskMSI += '{B0EC0673-51DF-0000-8E68-53BEFA9DEFB8}' # Navisworks Freedom 2020",
+            "$removeAutodeskMSI += '{B9312A51-41B5-479D-9F72-E7448A2D89AF}' # Autodesk Material Library 2020",
+            "$removeAutodeskMSI += '{0E976988-E753-4C81-BD96-434CE305B176}' # Autodesk Material Library Base Resolution Image Library 2020",
+            "$removeAutodeskMSI += '{B0EC0673-51DF-0409-8E68-53BEFA9DEFB8}' # Autodesk Navisworks Freedom 2020 - English Language Pack"
+        ],
+        "uninstallation": [
+            "$removeAutodeskMSI | ForEach-Object {Execute-Process -Path 'msiexec.exe' -Parameters ('/x ' + $PSItem + ' /qn') }"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
