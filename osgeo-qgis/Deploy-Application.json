@@ -1,0 +1,73 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "OSGeo",
+        "appName": "QGIS",
+        "appVersion": "3.10.1",
+        "appArch": "x86_x64",
+        "appLang": "en-us",
+        "appRevision": "1.3101.0.1",
+        "appScriptDate": "2020-01-09",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://qgis.org/downloads/QGIS-OSGeo4W-3.10.1-1-Setup-x86.exe"
+                ],
+                "sha256": "e9799bf8b714a9593b226c0bc02ae1ea69964552bc647a0fb220143e5dae9cd0"
+            },
+            "x64": {
+                "uri": [
+                    "https://qgis.org/downloads/QGIS-OSGeo4W-3.10.1-1-Setup-x86_64.exe"
+                ],
+                "sha256": "8ccaa10a172491ce1ec896e9d5109a96ba2e5144d535a050ea7dfeb1498c1b92"
+            }
+        },
+        "desktopItems": [
+            ""
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+        ],
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/S') -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            ""
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
