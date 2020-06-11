@@ -1,0 +1,73 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Google",
+        "appName": "Google Earth Pro",
+        "appVersion": "7.3.2",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "732.2.0.0",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 500,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://dl.google.com/dl/earth/client/advanced/current/googleearthprowin-7.3.2.exe"
+                ],
+                "sha256": "55DBF1E07EEEE2C115A083059DFF483F748E6AF5CB56C8F0AB7D71D95F14B346"
+            },
+            "x64": {
+                "uri": [
+                    "https://dl.google.com/dl/earth/client/advanced/current/googleearthprowin-7.3.2-x64.exe"
+                ],
+                "sha256": "3BA123EDC9E8200A1140C272A79740DF43D1A46BC90FED3B1B240D089C920A45"
+            }
+        },
+        "desktopItems": [
+            "Google Earth Pro.lnk"
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('OMAHA=1') -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Execute-Process -Path 'msiexec.exe' -Parameters ('/x '{70A0F34E-564B-4F93-ADD6-3BAEC6E44075}' /qn')"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
