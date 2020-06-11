@@ -4,10 +4,10 @@
     "psadtVariables": {
         "appVendor": "Emerson",
         "appName": "PRV2SIZE",
-        "appVersion": "2.9.31",
+        "appVersion": "2.9.7359.30114",
         "appArch": "x86",
         "appLang": "en-us",
-        "appRevision": "1.2932.1.1",
+        "appRevision": "2.29735930114.3.1",
         "appScriptDate": "2020-06-10",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
@@ -15,7 +15,7 @@
     },
     "appDetails": {
         "executables": [
-            ""
+            "Obsidian=PRV2SIZE"
         ],
         "reqSpaceMb": 300,
         "dotNet35": {
@@ -26,22 +26,23 @@
                 "uri": [
                     "https://valvesizing.emerson.com/Downloads/PRV2SIZE/pr7_20200224.1.zip"
                 ],
-                "sha256": ""
+                "sha256": "68E850740DDAD633249E1F69C4ECE782920CDE9FD948C65209862C3C4468BDB1"
             }
         },
         "desktopItems": [
-            ""
+            "Emerson PRV4$([char]0x00B2)SIZE"
         ]
     },
     "tasks": {
         "preinstallation": [
+            "# Needs SQL Server Compact 3.5 SP2 with MS Office 64-bit?"
         ],
         "installation": [
-            "$setupPath = Get-Item -Path ($dirfiles + '\\Application*.')",
-            "Execute-Process -Path ($setupPath + '\\setup.exe') -Parameters ('/qn') -PassThru"
+            "$setupPath = Get-Item -Path ($dirfiles + '\\Application*')",
+            "Execute-Process -Path ($setupPath.FullName + '\\setup.exe') -Parameters ('/qn') -PassThru"
         ],
         "uninstallation": [
-            ""
+            "Execute-Process -Path 'msiexec.exe' -Parameters ('/x {E5ED43C5-D554-4785-9F00-98118EA28D3F} /qn')"
         ]
     }
 }
