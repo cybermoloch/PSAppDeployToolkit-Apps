@@ -1,0 +1,73 @@
+{
+    "rmmVariables": [
+        "Bluebeam_Revu2019SerialNumber",
+        "Bluebeam_Revu2019ProductKey"
+    ],
+    "psadtVariables": {
+        "appVendor": "Bluebeam",
+        "appName": "Revu 2019",
+        "appVersion": "19.0.5",
+        "appArch": "x86_x64",
+        "appLang": "multi",
+        "appRevision": "3.0",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 2000,
+        "dotNet35": {
+            "required": false
+        },
+        "dotNet4x": {
+            "required": true,
+            "minVersion": "4.7.1"
+        },
+        "vcRedist": {
+            "required": true,
+            "release": "2015",
+            "minVersion": "14.0.24215.1"
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://downloads.bluebeam.com/software/downloads/2019/MSIBluebeamRevu19.0.15.zip"
+                ],
+                "sha256": "E7E72552BF00F8CBB90764C94C422F95B98CC88B4E117FCE5925F44229886FEF"
+            },
+            "x64": {
+                "uri": [
+                    "https://downloads.bluebeam.com/software/downloads/2019/MSIBluebeamRevu19.0.15x64.zip"
+                ],
+                "sha256": "22CA1C147F7E4335774F7A6EE9378B66199886549E63A42E2E624666975E5D84"
+            }
+        },
+        "desktopItems": [
+            ""
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            "Show-InstallationProgress -StatusMessage ('Removing previous versions of Bluebeam Revu')",
+            "Copy-File -Path ($dirFiles + '\\Uninstall Previous Versions.txt') -Destination ($dirSupportFiles + '\\Uninstall Previous Versions.cmd')",
+            "Execute-Process -Path ($dirSupportFiles + '\\Uninstall Previous Versions.cmd')"
+        ],
+        "installation": [
+            "$BB_SERIALNUMBER = ($Bluebeam_Revu2019SerialNumber)",
+            "$BB_PRODUCTKEY = ($Bluebeam_Revu2019ProductKey)",
+            "If ($Is64Bit) { $msiName = 'Bluebeam Revu x64 19.msi' } else { $msiName = 'Bluebeam Revu x86 19.msi' }",
+            "Execute-MSI -Action Install -Path $msiName -AddParameters ('/QN BB_SERIALNUMBER=' + $BB_SERIALNUMBER.Value + ' BB_PRODUCTKEY=' + $BB_PRODUCTKEY.Value) -PassThru"
+        ],
+        "uninstallation": [
+            "Remove-MSIApplications -Name 'Bluebeam Revu'"
+        ]
+    }
+}
