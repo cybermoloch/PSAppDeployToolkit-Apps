@@ -1,0 +1,40 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "IBM",
+        "appName": "OnDemand AFP Web Viewer",
+        "appVersion": "",
+        "appArch": "x86",
+        "appLang": "en",
+        "appRevision": "1.0.0.0",
+        "appScriptDate": "2020-03-24",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "iexplore=Internet Explorer"
+        ],
+        "reqSpaceMb": 20,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://reports.adp.ca/download/afpview.exe"
+                ],
+                "sha256": "72BA0D8D62E38BD99E8363215E353CC93E9CC02D6CE4A0508111591A6D91C033"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "$responseFile = ($dirSupportFiles + '\\afpview.iss')",
+            "$parameters = ('/s /a /s /f1' + $responseFile)",
+            "Execute-Process -Path 'afpview.exe' -Parameters $parameters -PassThru"
+        ],
+        "uninstallation": [
+            ""
+        ]
+    }
+}
