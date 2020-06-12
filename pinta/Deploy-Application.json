@@ -1,0 +1,42 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Pinta Community",
+        "appName": "Pinta",
+        "appVersion": "1.7.0.236",
+        "appArch": "x86",
+        "appLang": "multi",
+        "appRevision": "2.170236.0.1",
+        "appScriptDate": "2020-06-11",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "Pinta=Pinta"
+        ],
+        "reqSpaceMb": 50,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://github.com/jpobst/Pinta/releases/download/dev/pinta-dev-1.7.0.236.exe"
+                ],
+                "sha256": "3221A4225F50A866B68812B054CBC3988C2A58435F4C2F3329D8F0DE8271F852"
+            }
+        }
+    },
+    "tasks": {
+        "preinstalltion": [
+            "# Requires Gtk# for .Net but self-installs silently -- should add prereq and handle ourself"
+        ],
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/quiet /norestart') -PassThru"
+        ],
+        "uninstallation": [
+            "Execute-Process -Path 'C:\\ProgramData\\Package Cache\\{87f98903-d94e-4e31-b768-8c4da989e24e}\\Pinta.exe' -Parameters ('/uninstall /quiet')"
+        ]
+    }
+}
