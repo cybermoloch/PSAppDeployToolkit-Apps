@@ -1,0 +1,75 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "New Edge",
+        "appVersion": "80.0.361.66",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "0.80036166.0.1",
+        "appScriptDate": "2020-03-18",
+        "appScriptAuthor": "CyberMoloch",        
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 500,
+        "dotNet": {
+            "required": false,
+            "version": ""
+        },
+        "vcRedist": {
+            "required": false,
+            "release": "",
+            "version": ""
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/d79c2c42-96fa-40a3-90ca-bdfd0d7c79b0/MicrosoftEdgeEnterpriseX86.msi"
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "http://dl.delivery.mp.microsoft.com/filestreamingservice/files/2828e59b-2d46-4c1d-8d52-235fe21da25b/MicrosoftEdgeEnterpriseX64.msi"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            "Microsoft Edge.lnk"
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "Execute-MSI -Action Install -Path $packageFilename -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            ""
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
