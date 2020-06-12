@@ -1,0 +1,44 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Emerson",
+        "appName": "Daniel Orifice Flow Calculator",
+        "appVersion": "3.0",
+        "appArch": "x86",
+        "appLang": "en",
+        "appRevision": "2.30.0.3",
+        "appScriptDate": "2020-06-11",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "Orifice Calculator=Daniel Orifice Flow Calcualtor"
+        ],
+        "reqSpaceMb": 30,
+        "dotNet35": {
+            "required": true
+        },
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://www.emerson.com/documents/automation/training-orifice-flow-calculator-daniel-en-43918.zip"
+                ],
+                "sha256": "F710C8AC8E102A8089D238127750C9B7AB6D2D8ACA7D87D094B1F3221A75CFB4"
+            }
+        },
+        "desktopItems": [
+            "Daniel Orifice Flow Calculator.lnk"
+        ]
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path 'Orifice-flow-calculator-setup.exe' -Parameters ('/S /v/qn') -PassThru"
+        ],
+        "uninstallation": [
+            "Execute-Process -Path 'msiexec.exe' -Parameters ('/x {42759811-4AB6-43AF-B49D-737318C87748} /qn')"
+        ]
+    }
+}
