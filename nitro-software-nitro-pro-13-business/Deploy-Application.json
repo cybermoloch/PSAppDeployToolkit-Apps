@@ -3,13 +3,13 @@
         "Nitro_NitroPro13Serial"
     ],
     "psadtVariables": {
-        "appVendor": "Nitro",
+        "appVendor": "Nitro Software",
         "appName": "Nitro Pro 13 Business",
-        "appVersion": "13.2.6.26",
+        "appVersion": "13.19.2.356",
         "appArch": "x86_x64",
         "appLang": "en-US",
-        "appRevision": "2.132626.0.1",
-        "appScriptDate": "2019-11-25",
+        "appRevision": "2.13192356.0.1",
+        "appScriptDate": "2020-06-11",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
         "installTitle": ""
@@ -19,27 +19,18 @@
             "NitroPDF=Nitro Pro"
         ],
         "reqSpaceMb": 500,
-        "dotNet": {
-            "required": false,
-            "version": ""
-        },
-        "vcRedist": {
-            "required": false,
-            "release": "",
-            "version": ""
-        },
         "downloadInfo": {
             "x86": {
                 "uri": [
-                    "http://install.nitropdf.com/professional_132626/en/vlp/nitro_pro13_x86.msi"
+                    "http://install.nitropdf.com/professional_13192356/en/vlp/nitro_pro13_x86.msi"
                 ],
-                "sha256": "200420D484E4EB603674FAEE5C37AC4218DB68011065146EFF934E6BA9FF9F75"
+                "sha256": "85C65373F157E793293DBA42F5702243C35421CC2F8963E484AA3A10C05F7C4D"
             },
             "x64": {
                 "uri": [
-                    "http://install.nitropdf.com/professional_132626/en/vlp/nitro_pro13_x64.msi"
+                    "http://install.nitropdf.com/professional_13192356/en/vlp/nitro_pro13_x64.msi"
                 ],
-                "sha256": "393B0993D3BF0B9B4862D975F52CF03AD3C5CFCE147752E2B9271E7C989F925D"
+                "sha256": "41D25A09104A8ECD3D6EA90FDA4797CAA9F76BF2BEFC31B39132C202FE68F2A3"
             }
         },
         "desktopItems": [
@@ -60,17 +51,8 @@
             "$NPSERIAL = ($rmmEnvironment.Nitro_NitroPro13Serial)",
             "Execute-MSI -Action Install -Path ('nitro_pro13_' + $appArch + '.msi') -AddParameters ('/QN NPSERIAL=' + $NPSERIAL) -PassThru"
         ],
-        "postinstallation": [
-            ""    
-        ],
-        "preuninstallation": [
-            ""
-        ],
         "uninstallation": [
             "Remove-MSIApplications -Name 'Nitro Pro'"
-        ],
-        "postuninstallation": [
-            ""    
         ]
     }
 }
