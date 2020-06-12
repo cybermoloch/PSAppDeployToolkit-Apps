@@ -1,0 +1,66 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Autodesk",
+        "appName": "DWG Trueview 2021",
+        "appVersion": "",
+        "appArch": "x64",
+        "appLang": "English",
+        "appRevision": "2.2020.0.1",
+        "appScriptDate": "2020-06-11",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "dwgviewr=DWG Trueview Application",
+            "AcCefSubprocess=DWG Trueview Subprocess"
+        ],
+        "reqSpaceMb": 6000,
+        "dotNet4x": {
+            "required": true,
+            "minversion": "4.7"
+        },
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://trial2.autodesk.com/NetSWDLD/2021/ACD/E6A1E1F6-4270-4D64-8BD5-CF3F3A09B77D/SFX/DWGTrueView_2021_English_64bit_dlm.sfx.exe"
+                ],
+                "sha256": "47DBDE0EA38F195433902836D3944906519B34384D058452CC7F8A893A793480"
+            }
+        },
+        "desktopItems": [
+            "DWG TrueView 2021 - English.lnk"
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            "Show-InstallationProgress -StatusMessage ('Extracting installation package... please wait.')",
+            "Execute-Process -Path ($dirSupportFiles + '\\hide_autodesk_selfextract.exe') -NoWait",
+            "Execute-Process -Path ($packageFilename) -Parameters ('-suppresslaunch -d \"' + $dirFiles + '\"') -WindowStyle 'Minimized'"
+        ],
+        "installation": [
+            "$extractPath = (Join-Path -Path ($dirFiles) -ChildPath ($packageFilename).Split('.')[0])",
+            "Execute-Process -Path ($extractPath + '\\Setup.exe') -Parameters ('/W /q /I') -PassThru"
+        ],
+        "postinstallation": [
+            ""
+        ],
+        "preuninstallation": [
+        ],
+        "uninstallation": [
+            "Remove-MSIApplication -Name 'Autodesk DWG TrueView 2021 - English'"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
