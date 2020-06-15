@@ -1,0 +1,45 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Yubico",
+        "appName": "Yubico Authenticator",
+        "appVersion": "LATEST",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "1.9999.0.1",
+        "appScriptDate": "2020-06-25",
+        "appScriptAuthor": "CyberMoloch",        
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 150,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://developers.yubico.com/yubioath-desktop/Releases/yubioath-desktop-latest-win32.msi"
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "https://developers.yubico.com/yubioath-desktop/Releases/yubioath-desktop-latest-win64.msi"
+                ],
+                "sha256": ""
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-MSI -Action Install -Path $packageFilename -AddParameters ('/QN') -PassThru"
+        ],
+        "uninstallation": [
+            "Remove-MSIApplications -Name 'Yubico Authenticator'"
+        ]
+    }
+}
