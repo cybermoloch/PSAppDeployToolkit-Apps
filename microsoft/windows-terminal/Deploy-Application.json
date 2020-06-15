@@ -1,0 +1,38 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "Windows Terminal",
+        "appVersion": "1.0.401.0",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "2.104010.0.1",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "OpenConsole=Windows Terminal",
+            "WindowsTerminal=Windows Terminal"
+        ],
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://github.com/microsoft/terminal/releases/download/v1.0.1401.0/Microsoft.WindowsTerminal_1.0.1401.0_8wekyb3d8bbwe.msixbundle"
+                ],
+                "sha256": "1017C8FF310E4CB4FB843DE26C93BAA170FE5A4764065D9FAA25A45A6D724514"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Add-AppxProvisionedPackage -Online -FolderPath $packageFilename -SkipLicense"
+        ],
+        "uninstallation": [
+            "Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'Microwoft.WindowsTerminal'} | Remove-AppxProvisionedPackage",
+            "Get-AppxPackage -AllUsers | Where-Object {$_.Name -eq 'Microsoft.WindowsTerminal'} | Remove-AppxPackage"
+        ]
+    }
+}
