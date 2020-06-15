@@ -28,7 +28,7 @@
     },
     "tasks": {
         "installation": [
-            "Add-AppxProvisionedPackage -Online -FolderPath $packageFilename -SkipLicense"
+            "Add-AppxProvisionedPackage -Online -PackagePath $packageFilename -SkipLicense"
         ],
         "uninstallation": [
             "Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq 'Microwoft.WindowsTerminal'} | Remove-AppxProvisionedPackage",
