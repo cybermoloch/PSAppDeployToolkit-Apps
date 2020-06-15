@@ -1,0 +1,48 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Samuel Attard",
+        "appName": "Google Play Music Desktop Player",
+        "appVersion": "4.7.1",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "2.471.0.1",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "Google Play Music Desktop Player=Google Play Music Desktop Player"
+        ],
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v4.7.1/Google.Play.Music.Desktop.Player.Setup.exe"
+                ],
+                "sha256": "094690EDC5B7A40B86B64A86DF8C2140D35C3A801F5C1A990AEDE3227DF70DE5"
+            }
+        }
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "Execute-ProcessAsUser -Path $packageFilename -Parameters ('-s') -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "Execute-ProcessAsUser -Path ($envAppData + '\\GPMDP_3\\Update.exe') -Parameters ('--uninstall -s')"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
