@@ -1,0 +1,39 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Ferdi Community",
+        "appName": "Ferdi Messenger",
+        "appVersion": "5.5.0",
+        "appArch": "x64",
+        "appLang": "multi",
+        "appRevision": "1.550.0.1",
+        "appScriptDate": "2020-06-15",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://github.com/getferdi/ferdi/releases/download/v5.5.0/Ferdi-5.5.0.exe"
+                ],
+                "sha256": "20249BE6771415B46DAAE2CD41AFB6BCA2477F4D86A3986D94DFD0E76E23F516"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-ProcessAsUser -Path ($dirFiles + '\\' + $packageFilename) -Parameters ('/S') -PassThru"
+        ],
+        "uninstallation": [
+            ""
+        ]
+    }
+}
