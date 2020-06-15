@@ -1,0 +1,43 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "8bit Solutions",
+        "appName": "Bitwarden Desktop",
+        "appVersion": "1.18.0",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "2.1180.0.1",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://github.com/bitwarden/desktop/releases/download/v1.18.0/Bitwarden-1.18.0-ia32.appx"
+                ],
+                "sha256": ""
+            },
+            "x64": {
+                "uri": [
+                    "https://github.com/bitwarden/desktop/releases/download/v1.18.0/Bitwarden-1.18.0-x64.appx"
+                ],
+                "sha256": ""
+            }            
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Add-AppxProvisionedPackage -Online -PackagePath ($dirFiles + '\\' + $packageFilename) -SkipLicense"
+        ],
+        "uninstallation": [
+            "Get-AppxProvisionedPackage -Online | Where-Object {$_.DisplayName -eq '8bitSolutionsLLC.bitwardendesktop'} | Remove-AppxProvisionedPackage",
+            "Get-AppxPackage -AllUsers | Where-Object {$_.Name -eq '8bitSolutionsLLC.bitwardendesktop'} | Remove-AppxPackage"
+        ]
+    }
+}
