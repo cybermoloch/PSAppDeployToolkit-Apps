@@ -1,0 +1,45 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Rizonesoft",
+        "appName": "Notepad3",
+        "appVersion": "5.20.414.1",
+        "appArch": "x86_x64",
+        "appLang": "multi",
+        "appRevision": "1.5204141.0.1",
+        "appScriptDate": "2020-06-15",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 50,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://www.rizonesoft.com/software/notepad3/Notepad3_5.20.414.1_x86_Setup.exe"
+                ],
+                "sha256": "A6F7E48E2FA827E1A516D1FA8D30E5DE02CCB08E1DDE443E9BA6DD48FEF6EB19"
+            },
+            "x64": {
+                "uri": [
+                    "https://www.rizonesoft.com/software/notepad3/Notepad3_5.20.414.1_Setup.exe"
+                ],
+                "sha256": "2001CC90A1F32685ED06C68FA97AF0037C92C9A73308CB21B2310E6EB0E88A0B"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/verysilent') -PassThru"
+        ],
+        "uninstallation": [
+            ""
+        ]
+    }
+}
