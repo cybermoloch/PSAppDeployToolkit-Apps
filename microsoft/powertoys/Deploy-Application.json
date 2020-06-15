@@ -1,0 +1,41 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "PowerToys",
+        "appVersion": "0.18.2",
+        "appArch": "x86_x64",
+        "appLang": "en-US",
+        "appRevision": "2.0182.0.1",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "OpenConsole=Windows Terminal",
+            "WindowsTerminal=Windows Terminal"
+        ],
+        "dotNetCore": {
+            "required": true,
+            "minversion": "3.1"
+        },
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://github.com/microsoft/PowerToys/releases/download/v0.18.2/PowerToysSetup-0.18.2-x64.msi"
+                ],
+                "sha256": "DC0E13DFE6BBCFF30133A8E49F2C948B332749EDBA52561A44BC18B54F8B0A85"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-MSI -Action Install -Path $packageFilename -AddParameters '/qn'"
+        ],
+        "uninstallation": [
+            "Remove-MSIApplications -Name 'PowerToys (Preview)'"
+        ]
+    }
+}
