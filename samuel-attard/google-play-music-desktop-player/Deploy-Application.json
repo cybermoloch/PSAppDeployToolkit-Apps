@@ -30,7 +30,7 @@
             ""
         ],
         "installation": [
-            "Execute-ProcessAsUser -Path $packageFilename -Parameters ('-s') -PassThru"
+            "Execute-ProcessAsUser -Path ($dirFiles + '\\' + $packageFilename) -Parameters ('-s') -PassThru"
         ],
         "postinstallation": [
             ""    
