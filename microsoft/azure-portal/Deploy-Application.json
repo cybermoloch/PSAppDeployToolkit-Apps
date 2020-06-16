@@ -1,0 +1,39 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Microsoft",
+        "appName": "Azure Portal",
+        "appVersion": "1.0.20",
+        "appArch": "x86",
+        "appLang": "multi",
+        "appRevision": "1.1020.0.1",
+        "appScriptDate": "2020-06-15",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://azureportalapp.azurefd.net/azureportalapp/1.0.20/AzurePortalInstaller.exe"
+                ],
+                "sha256": "2E7E2205FF16C781B91E019D2C1A08CEB8323E39E09756FA54A5C66ADED397FF"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-ProcessAsUser -Path ($dirFiles + '\\' + $packageFilename) -Parameters ('/Q') -PassThru"
+        ],
+        "uninstallation": [
+            ""
+        ]
+    }
+}
