@@ -9,11 +9,12 @@
         "appVersion": "",
         "appArch": "x64",
         "appLang": "multi",
-        "appRevision": "0.1",
-        "appScriptDate": "2020-06-11",
+        "appRevision": "0.2",
+        "appScriptDate": "2020-06-16",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "accumap"
     },
     "appDetails": {
         "executables": [
@@ -54,7 +55,9 @@
             "$downloaderConfigDirectory = 'IHS_Markit\\AccuMap_IPL.exe_StrongName_fxknvedwlkwtltdz21hw2dkfydynv3fd'",
             "$downloaderConfigDestination = ($envLocalAppData + '\\' + $downloaderConfigDirectory + '\\' + $downloaderVersion)",
             "New-Folder -Path $downloaderConfigDestination",
-            "Copy-File -Path ($dirSupportFiles + '\\user.config') -Destination ($downloaderConfigDestination + '\\user.config')",
+            "[xml]$userConfig = Get-Content -Path ($dirSupportFiles + '\\user.config')",
+            "$userConfig.configuration.userSettings.'AccuMap.FileDownloader.Properties.Settings'.setting.GetValue(1).Value  = $dirFiles",
+            "$userConfig.Save($downloaderConfigDestination + '\\user.config')",
             "$installedAccuMapPath = (Get-ChildItem 'C:\\IHS Markit\\AccuMap' -Filter 'v*' -Directory)",
             "If ($installedAccuMapPath) { Show-InstallationProgress -StatusMessage ('Uninstalling previous AccuMap versions...') }",
             "If ($installedAccuMapPath) { $installedAccuMapPath | ForEach-Object -Process { $uninstallParameters = ('-f\"C:\\IHS Markit\\Accumap\\' + $_.Name + '\\Uninst.isu\" -a') } }",
