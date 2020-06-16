@@ -8,7 +8,7 @@
         "appVersion": "1.9.6",
         "appArch": "x86_x64",
         "appLang": "en-US",
-        "appRevision": "1.196.0.1",
+        "appRevision": "1.196.1.1",
         "appScriptDate": "2020-06-25",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
@@ -16,9 +16,9 @@
     },
     "appDetails": {
         "executables": [
-            ""
+            "SnakeTail=SnakeTail"
         ],
-        "reqSpaceMb": 20,
+        "reqSpaceMb": 10,
         "downloadInfo": {
             "x86": {
                 "uri": [
