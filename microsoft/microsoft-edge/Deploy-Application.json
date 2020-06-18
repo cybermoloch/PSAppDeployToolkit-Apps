@@ -4,7 +4,7 @@
     ],
     "psadtVariables": {
         "appVendor": "Microsoft",
-        "appName": "New Edge",
+        "appName": "Microsoft Edge",
         "appVersion": "80.0.361.66",
         "appArch": "x86_x64",
         "appLang": "en-US",
@@ -12,11 +12,12 @@
         "appScriptDate": "2020-03-18",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "microsoft-edge"
     },
     "appDetails": {
         "executables": [
-            ""
+            "msedge=Microsoft Edge"
         ],
         "reqSpaceMb": 500,
         "dotNet": {

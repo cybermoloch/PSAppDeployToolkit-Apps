@@ -11,11 +11,14 @@
         "appScriptDate": "2020-01-09",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "qgis"
     },
     "appDetails": {
         "executables": [
-            ""
+            "qgis-bin-g7=QGIS",
+            "designer=Qt Designer",
+            "saga_gui=SAGA"
         ],
         "reqSpaceMb": 300,
         "dotNet": {
@@ -42,7 +45,7 @@
             }
         },
         "desktopItems": [
-            ""
+            "QGIS 3.10"
         ],
         "associations": [
             {

@@ -8,11 +8,12 @@
         "appVersion": "13.19.2.356",
         "appArch": "x86_x64",
         "appLang": "en-US",
-        "appRevision": "2.13192356.0.1",
+        "appRevision": "2.13192356.0.2",
         "appScriptDate": "2020-06-11",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "nitro-pro-13-business"
     },
     "appDetails": {
         "executables": [
@@ -48,7 +49,7 @@
             ""
         ],
         "installation": [
-            "$NPSERIAL = ($rmmEnvironment.Nitro_NitroPro13Serial)",
+            "$NPSERIAL = ($Nitro_NitroPro13Serial)",
             "Execute-MSI -Action Install -Path ('nitro_pro13_' + $appArch + '.msi') -AddParameters ('/QN NPSERIAL=' + $NPSERIAL) -PassThru"
         ],
         "uninstallation": [

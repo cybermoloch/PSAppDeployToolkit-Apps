@@ -12,7 +12,8 @@
         "appScriptDate": "2020-10-06",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "mouse-without-borders"
     },
     "appDetails": {
         "executables": [
@@ -29,7 +30,7 @@
             }
         },
         "desktopItems": [
-            "Mouse without Borders"
+            "Mouse without Borders.lnk"
         ]
     },
     "tasks": {

@@ -10,11 +10,12 @@
         "appRevision": "",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "navisworks-freedom-2020"
     },
     "appDetails": {
         "executables": [
-            "roamer=Autodesk Navisworks 2020"
+            "Roamer=Navisworks"
         ],
         "reqSpaceMb": 6000,
         "dotNet": {
@@ -41,7 +42,8 @@
             }
         },
         "desktopItems": [
-            "Autodesk Desktop App.lnk"
+            "Autodesk Desktop App.lnk",
+            "Navisworks Freedom 2020.lnk"
         ],
         "associations": [
             {

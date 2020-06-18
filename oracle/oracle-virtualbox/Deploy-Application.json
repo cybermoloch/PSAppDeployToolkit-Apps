@@ -11,7 +11,8 @@
         "appScriptDate": "2020-01-09",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId" : "oracle-virtualbox"
     },
     "appDetails": {
         "executables": [
@@ -28,7 +29,7 @@
             }
         },
         "desktopItems": [
-            "Oracle VM VirtualBox"
+            "Oracle VM VirtualBox.lnk"
         ]
     },
     "tasks": {

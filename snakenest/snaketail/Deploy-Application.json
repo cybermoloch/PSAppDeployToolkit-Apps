@@ -12,7 +12,8 @@
         "appScriptDate": "2020-06-25",
         "appScriptAuthor": "CyberMoloch",        
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "snaketail"
     },
     "appDetails": {
         "executables": [
