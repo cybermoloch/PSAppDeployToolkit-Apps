@@ -1,0 +1,47 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "Remote Utilities",
+        "appName": "Server",
+        "appVersion": "2.8",
+        "appArch": "x64",
+        "appLang": "multi",
+        "appRevision": "2.28.1.7",
+        "appScriptDate": "2020-06-23",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 300,
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://www.remoteutilities.com/download/server2.8.exe"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            ""
+        ]
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/S /v/qn') -PassThru"
+        ],
+        "postinstallation": [
+            "# Main purpose is to have the admin console so stop and disable the server service",
+            "Execute-Process -Path ($envProgramFilesX86 + '\\Remote Utilities - Server\\InternetIdService.exe') -Parameters ('/stop')",
+            "Execute-Process -Path ($envProgramFilesX86 + '\\Remote Utilities - Server\\InternetIdService.exe') -Parameters ('/uninstall')"
+        ],
+        "uninstallation": [
+            "Remove-MSIApplications -Name 'Remote Utilities Server'"
+        ]
+    }
+}
