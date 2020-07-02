@@ -1,7 +1,8 @@
 {
     "rmmVariables": [
         "OpenVPN_ConfigUriBase",
-        "OpenVPN_ConfigUriSAS"
+        "OpenVPN_ConfigUriSAS",
+        "RemoveOldConfigs"
     ],
     "psadtVariables": {
         "appVendor": "OpenVPN",
@@ -9,11 +10,12 @@
         "appVersion": "2.4.8",
         "appArch": "x86_x64",
         "appLang": "multi",
-        "appRevision": "0.1",
-        "appScriptDate": "2020-04-02",
+        "appRevision": "2.248.3.5",
+        "appScriptDate": "2020/06/25",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "appId": "openvpn-gui"
     },
     "appDetails": {
         "executables": [
@@ -51,6 +53,8 @@
             "Execute-Process -Path $packageFilename -Parameters ('/S') -PassThru"
         ],
         "postinstallation": [
+            "# Datto RMM uses strings as fake booleans: https://help.aem.autotask.net/en/Content/4WEBPORTAL/Components/InputVariables.htm",
+            "If ($RemoveOldConfigs -eq 'true') {Remove-File -Path ($envProgramFiles + '\\OpenVPN\\config\\*.ovpn')}",
             "$configFilename = ('openvpn-' + $envComputerName + '-inline.ovpn')",
             "$fullConfigUri = ($OpenVPN_ConfigUriBase + $configFilename + $OpenVPN_ConfigUriSAS)",
             "Get-FileFromUri -Uri $fullConfigUri -Destination ($envProgramFiles + '\\OpenVPN\\config\\' + $configFilename)"
