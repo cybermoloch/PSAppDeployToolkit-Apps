@@ -1,0 +1,61 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "3CX",
+        "appName": "3CX Phone for Windows",
+        "appVersion": "16.0",
+        "appArch": "x86",
+        "appLang": "en-US",
+        "appRevision": "1.16.0.1",
+        "appScriptDate": "2020-07-03",
+        "appScriptAuthor": "CyberMoloch",        
+        "installName": "",
+        "installTitle": "",
+        "appId": "3cx-phone-for-windows"
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 50,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://downloads-global.3cx.com/downloads/3CXPhoneforWindows16.msi"
+                ],
+                "sha256": ""
+            }
+        },
+        "desktopItems": [
+            ""
+        ],
+        "associations": [
+            {
+                "extension": "",
+                "application": ""
+            }
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "Execute-MSI -Action Install -Path $packageFilename -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            ""
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
