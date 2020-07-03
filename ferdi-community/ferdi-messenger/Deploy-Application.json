@@ -8,15 +8,16 @@
         "appVersion": "5.5.0",
         "appArch": "x64",
         "appLang": "multi",
-        "appRevision": "1.550.0.1",
-        "appScriptDate": "2020-06-15",
+        "appRevision": "1.550.0.2",
+        "appScriptDate": "2020-07-03",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
-        "installTitle": ""
+        "installTitle": "",
+        "app-id": "ferdi-messenger"
     },
     "appDetails": {
         "executables": [
-            ""
+            "Ferdi=Ferdi Messenger"
         ],
         "reqSpaceMb": 300,
         "downloadInfo": {
