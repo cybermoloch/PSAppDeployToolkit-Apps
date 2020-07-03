@@ -1,0 +1,52 @@
+{
+    "rmmVariables": [
+        ""
+    ],
+    "psadtVariables": {
+        "appVendor": "CyberMoloch",
+        "appName": "Dattotask Nativefied",
+        "appVersion": "2.904.1",
+        "appArch": "x64",
+        "appLang": "en-US",
+        "appRevision": "1.29041.0.1",
+        "installName": "",
+        "installTitle": ""
+    },
+    "appDetails": {
+        "executables": [
+            "Dattotask Nativefied"
+        ],
+        "reqSpaceMb": 200,
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://gitlab.com/cybermoloch/dattotask-nativefied/-/jobs/622488821/artifacts/raw/setupfiles/Dattotask-Nativefied_2.904.1_Setup.exe"
+                ],
+                "sha256": "4AC17AF1FA2446116E3C1C554A896FD8A434086C053A9ADE3EACF62721AC9C80"
+            }
+        },
+        "desktopItems": [
+            ""
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+            ""
+        ],
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/verysilent') -PassThru"
+        ],
+        "postinstallation": [
+            ""    
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            ""
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
