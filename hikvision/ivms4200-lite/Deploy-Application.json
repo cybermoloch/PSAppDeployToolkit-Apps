@@ -1,0 +1,62 @@
+{
+    "rmmVariables": [
+        "iVMS4200Lite_ConfigUri",
+        "iVMS4200Lite_ConfigUriSAS"
+    ],
+    "psadtVariables": {
+        "appVendor": "Hikvision",
+        "appName": "iVMS-4200 Lite",
+        "appVersion": "1.0.0.5",
+        "appArch": "x86",
+        "appLang": "multi",
+        "appRevision": "2.1005.2.1",
+        "appScriptDate": "2020/07/15",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": "",
+        "appId": "ivms4200-lite",
+        "appDesc": "iVMS-4200 Lite provides basic video surveillance functions including real-time live view, video recording, remote search and playback for the connected devices (such as DVRs, NVRs, network cameras, network speed dome, etc.).",
+        "downloadPage": "https://overseasadmin.hikvision.com/uk/Support/Downloads/Client-Software"
+    },
+    "appDetails": {
+        "executables": [
+            ""
+        ],
+        "reqSpaceMb": 200,
+        "downloadInfo": {
+            "x86": {
+                "uri": [
+                    "https://oversea-download.hikvision.com/Uploadfile/Soft/Client%20Software/download/iVMS-4200%20Lite.zip"
+                ],
+                "sha256": "E55ABDB0057A3C322904FCDB95D5FD3CA7620947C23B00DE123FF9124AC3F4EF"
+            }
+        },
+        "desktopItems": [
+            "iVMS-4200 Lite.lnk"
+        ]
+    },
+    "tasks": {
+        "preinstallation": [
+        ],
+        "installation": [
+            "# https://overseasadmin.hikvision.com/en/Support/Downloads/Client-Software",
+            "Execute-Process -Path 'iVMS-4200 Lite_EN.exe' -Parameters ('/s /f1\"' + $dirSupportFiles + '\\ivms4200-lite_install.iss\"') -PassThru"
+        ],
+        "postinstallation": [
+            "$fullConfigUri = ($iVMS4200Lite_ConfigUri + $iVMS4200Lite_ConfigUriSAS)",
+            "Get-FileFromUri -Uri $fullConfigUri -Destination ($dirSupportFiles + '\\ivms4200-lite_config.zip')",
+            "Expand-Archive -Path ($dirSupportFiles + '\\ivms4200-lite_config.zip') -Destination ($envProgramFiles + '\\iVMS-4200 Lite\\') -Force"
+        ],
+        "preuninstallation": [
+            ""
+        ],
+        "uninstallation": [
+            "$uninstallProgram = ($envProgramFilesX86 + '\\InstallShield Installation Information\\{DB03E757-F619-463F-9370-28D16DB168C2}\\setup.exe')",
+            "$uninstallParameters = ('-runfromtemp -l0x0409  -removeonly -s -f1\"' + $dirSupportFiles + '\\ivms4200-lite_uninstall.iss\"')",
+            "Execute-Process -Path $uninstallProgram -Parameters $uninstallParameters -PassThru"
+        ],
+        "postuninstallation": [
+            ""    
+        ]
+    }
+}
