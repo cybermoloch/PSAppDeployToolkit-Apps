@@ -9,8 +9,8 @@
         "appVersion": "1.0.0.5",
         "appArch": "x86",
         "appLang": "multi",
-        "appRevision": "2.1005.2.1",
-        "appScriptDate": "2020/07/15",
+        "appRevision": "2.1005.3.9",
+        "appScriptDate": "2020/07/17",
         "appScriptAuthor": "CyberMoloch",
         "installName": "",
         "installTitle": "",
@@ -45,7 +45,12 @@
         "postinstallation": [
             "$fullConfigUri = ($iVMS4200Lite_ConfigUri + $iVMS4200Lite_ConfigUriSAS)",
             "Get-FileFromUri -Uri $fullConfigUri -Destination ($dirSupportFiles + '\\ivms4200-lite_config.zip')",
-            "Expand-Archive -Path ($dirSupportFiles + '\\ivms4200-lite_config.zip') -Destination ($envProgramFiles + '\\iVMS-4200 Lite\\') -Force"
+            "Expand-Archive -Path ($dirSupportFiles + '\\ivms4200-lite_config.zip') -Destination ($envProgramFiles + '\\iVMS-4200 Lite\\') -Force",
+            "# Needs to run once with elevated rights once to do some setup stuff",
+            "Show-InstallationProgress -StatusMessage 'Performing initial setup tasks...'",
+            "# Hidden Window couldn't be closed afterwards so minimize",
+            "Execute-Process -Path ($dirSupportFiles + '\\miniclose_ivms4200-lite.exe') -PassThru -NoWait",
+            "Execute-Process -Path ($envProgramFiles + '\\iVMS-4200 Lite\\iVMS-4200 Lite.exe') -PassThru"
         ],
         "preuninstallation": [
             ""
