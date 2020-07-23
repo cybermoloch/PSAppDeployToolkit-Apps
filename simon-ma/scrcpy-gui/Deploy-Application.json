@@ -1,0 +1,42 @@
+{
+    "rmmVariables": [
+    ],
+    "psadtVariables": {
+        "appVendor": "Simon Ma",
+        "appName": "Scrcpy GUI",
+        "appVersion": "1.5.1",
+        "appArch": "x64",
+        "appLang": "en",
+        "appRevision": "1.151.0.5",
+        "appScriptDate": "2020-06-21",
+        "appScriptAuthor": "CyberMoloch",
+        "installName": "",
+        "installTitle": "",
+        "appId": "scrcpy-gui"
+    },
+    "appDetails": {
+        "executables": [
+            "ScrcpyGui",
+            "scrcpy"
+        ],
+        "reqSpaceMb": 150,
+        "downloadInfo": {
+            "x64": {
+                "uri": [
+                    "https://github.com/Tomotoes/scrcpy-gui/releases/download/1.5.1/ScrcpyGui-1.5.1.win64.exe"
+                ],
+                "sha256": "A377B5FDBD4DAA6AEAEAF384FFAFCED3F1C67B8CB4871D1C09315AA91D202350"
+            }
+        }
+    },
+    "tasks": {
+        "installation": [
+            "Execute-Process -Path $packageFilename -Parameters ('/S /ALLUSERS') -PassThru",
+            "Get-FileFromUri -Uri 'https://github.com/Genymobile/scrcpy/releases/download/v1.14/scrcpy-win64-v1.14.zip' -Sha256 '2BE9139E46E29CF2F5F695848BB2B75A543B8F38BE1133257DC5068252ABC25F'",
+            "Expand-Archive -Path ($dirSupportFiles + '\\scrcpy-win64-v1.14.zip') -Destination ($envProgramFiles + '\\SimonMa\\ScrcpyGui\\') -Force"
+        ],
+        "uninstallation": [
+            "Execute-Process -Path ($envProgramFiles + '\\SimonMa\\ScrcpyGui\\uninstall.exe') -Parameters ('/S') -PassThru"
+        ]
+    }
+}
